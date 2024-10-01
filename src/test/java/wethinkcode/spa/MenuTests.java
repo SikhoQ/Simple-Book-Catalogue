@@ -32,7 +32,6 @@ public class MenuTests extends WebTestRunner {
 
     @Test
     @DisplayName("Click on Dictionary menu")
-    @Disabled
     void dictionaryMenu() {
         session.open(new MainPage(MenuTests.this))
                 .shouldBeOnMainPage()
@@ -42,7 +41,6 @@ public class MenuTests extends WebTestRunner {
 
     @Test
     @DisplayName("Click on Synonyms menu")
-    @Disabled
     void synonymsMenu() {
         session.open(new MainPage(MenuTests.this))
                 .shouldBeOnMainPage()
@@ -52,7 +50,6 @@ public class MenuTests extends WebTestRunner {
 
     @Test
     @DisplayName("Click on Antonyms menu")
-    @Disabled
     void antonymsMenu() {
         session.open(new MainPage(MenuTests.this))
                 .shouldBeOnMainPage()

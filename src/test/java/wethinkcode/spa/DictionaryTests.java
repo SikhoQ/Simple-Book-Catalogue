@@ -17,7 +17,6 @@ public class DictionaryTests extends WebTestRunner {
 
     @Test
     @DisplayName("lookup a word")
-    @Disabled
     void lookupHasEverything() {
         session.open(new MainPage(DictionaryTests.this))
                 .shouldBeOnMainPage()

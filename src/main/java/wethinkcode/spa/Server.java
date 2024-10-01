@@ -1,9 +1,5 @@
 package wethinkcode.spa;
 
-/*
- ** DO NOT CHANGE!!
- */
-
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 
@@ -13,7 +9,12 @@ public class Server {
     private final Javalin appServer;
 
     public Server() {
-        appServer = Javalin.create(config -> config.addStaticFiles(PAGES_DIR, Location.CLASSPATH));
+        appServer = Javalin.create(config -> {
+            config.staticFiles.add(staticFileConfig -> {
+                staticFileConfig.directory = PAGES_DIR;
+                staticFileConfig.location = Location.CLASSPATH;
+            });
+        });
     }
 
     public static void main(String[] args) {

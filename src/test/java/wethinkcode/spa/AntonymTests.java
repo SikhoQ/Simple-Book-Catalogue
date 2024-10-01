@@ -17,7 +17,6 @@ public class AntonymTests extends WebTestRunner {
 
     @Test
     @DisplayName("lookup a word")
-    @Disabled
     void lookupHasEverything() {
         session.open(new MainPage(AntonymTests.this))
                 .shouldBeOnMainPage()

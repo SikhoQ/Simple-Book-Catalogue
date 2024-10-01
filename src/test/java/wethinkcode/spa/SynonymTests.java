@@ -17,7 +17,6 @@ public class SynonymTests extends WebTestRunner {
 
     @Test
     @DisplayName("lookup a word")
-    @Disabled
     void lookupHasEverything() {
         session.open(new MainPage(SynonymTests.this))
                 .shouldBeOnMainPage()

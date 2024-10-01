@@ -4,22 +4,109 @@
 <head>
     <title>A Simple SPA</title>
     <link
-        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
-        rel="icon" type="image/x-icon" />
+            href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
+            rel="icon" type="image/x-icon" />
 </head>
 
 <body>
-    <nav>
-        <a id="dictionary" href="#/dictionary">Dictionary</a>
-    </nav>
+<nav>
+    <a href="#/dictionary" id="dictionary">Dictionary</a>
+    <a href="#/synonym" id="synonyms">Synonym</a>
+    <a href="#/antonym" id="antonyms">Antonym</a>
+</nav>
 
-    <br />
-    <div id="app">Click on a menu item.</div>
+<br />
+<div id="app">Click on a menu item.</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-router@1.2.8/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-    <script src="/js/app.js"></script>
+<script id="default-template" type="text/handlebars-template">
+    <p>Click on a menu item.</p>
+</script>
+
+<script id="dictionary-template" type="text/handlebars-template">
+    <h1>Dictionary</h1>
+    <br/>
+    <form id="form">
+        <input id="lookup" name="word" type="text" required/>
+        <input name="submit" type="submit" value="Lookup"/>
+    </form>
+    <br/>
+    <div id="results"></div>
+</script>
+
+<script id="synonym-template" type="text/handlebars-template">
+    <h1>Synonym</h1>
+    <br/>
+    <form id="form">
+        <input id="lookup" name="word" type="text" required/>
+        <input name="submit" type="submit" value="Lookup"/>
+    </form>
+    <br/>
+    <div id="results"></div>
+</script>
+
+<script id="antonym-template" type="text/handlebars-template">
+    <h1>Antonym</h1>
+    <br/>
+    <form id="form">
+        <input id="lookup" name="word" type="text" required/>
+        <input name="submit" type="submit" value="Lookup"/>
+    </form>
+    <br/>
+    <div id="results"></div>
+</script>
+
+
+
+<script id="thesaurus-template" type="text/handlebars-template">
+    <h1>Thesaurus</h1>
+    <p>Coming soon!</p>
+    <br/>
+</script>
+
+<script id="results-template" type="text/handlebars-template">
+    <h2 id="word">{{word}}</h2>
+    <h2 id="phonetic">{{phonetic}}</h2>
+    {{#if audio}}
+    <audio controls>
+        <source src="{{audio}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    {{/if}}
+    <ol>
+        {{#if this.synonym}}
+        <h3>Synonym</h3>
+
+        <li class="related-word">{{this.synonym}}</li>
+        {{/if}}
+    </ol>
+    <ol>
+        {{#if this.antonym}}
+        <h3>antonym</h3>
+        <li class="related-word">{{this.antonym}}</li>
+        {{/if}}
+
+    </ol>
+
+    <h4>Meanings</h4>
+    {{#each meanings}}
+    <h4 class="part-of-speech">{{partOfSpeech}}</h4>
+    <ol>
+        {{#each definitions}}
+        <li class="definition">{{this.definition}} <em class="example">{{this.example}}</em></li>
+        {{/each}}
+    </ol>
+    {{/each}}
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+<!-- the vanilla-router library-->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-router@1.2.8/index.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+<script src="/js/app.js"></script>
 </body>
 
 </html>
