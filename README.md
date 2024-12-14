@@ -63,7 +63,6 @@ To run the project locally, follow these steps:
 
 ## **Project Structure**  
 ```
-├── grading.rsync-filter.txt
 ├── Makefile
 ├── pom.xml
 └── src
