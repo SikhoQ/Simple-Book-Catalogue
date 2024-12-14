@@ -116,8 +116,7 @@ To run the project locally, follow these steps:
 ## **Future Improvements**  
 - Add user authentication for personalized catalogues.  
 - Enhance search functionality with advanced filters (e.g., by author or publication date).  
-- Implement pagination for large catalogues.  
-- Provide an API for programmatic access to the catalogue.  
+- Implement pagination for large catalogues.
 
 ## **Contributors**  
 This project was completed as part of the WeThinkCode_ program.  
